@@ -1,6 +1,6 @@
 import { User } from './../shared/models/user';
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-in',
@@ -10,27 +10,23 @@ import { FormControl } from '@angular/forms';
 export class SignInComponent implements OnInit {
 
   user = new User();
-  username = new FormControl('Name');
-  email = new FormControl('Email');
-  password = new FormControl('Password');
-  address = new FormControl('Address');
-  zip = new FormControl('');
-  city = new FormControl('City');
+  userForm = this.fb.group({
+    username: [''],
+    email: [''],
+    password: [''],
+    address: [''],
+    zip: [''],
+    city: [''],
+    });
 
 
 
 
-  constructor() { }
+    constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
   }
-  newUser() {
-    this.user.username = this.username.value;
-    this.user.email = this.password.value;
-    this.user.password = this.address.value;
-    this.user.zip = this.zip.value;
-    this.user.city = this.city.value;
-    console.log(this.user);
-
-  }
+  onSubmit() {
+    console.log(this.userForm.value);
+}
 }
