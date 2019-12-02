@@ -1,48 +1,44 @@
-<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-  <div class='container'>
-    <div>
-      <label>Username :<br>
-        <input type="text" formControlName="username">
-      </label>
-    </div>
-    <div>
-      <label>
-        Email :<br>
-
-        <input type="email" formControlName="email">
-      </label>
-    </div>
-    <div>
-      <label>
-        Password :<br>
-
-        <input type="password" formControlName="password">
-      </label>
-    </div>
-    <div>
-      <label>
-        Address :<br>
-        <input type="text" formControlName="address">
-      </label>
-    </div>
-    <div>
-      <label>
-        Zip : <br>
-        <input type="number" formControlName="zip">
-      </label>
-    </div>
-    <div>
-      <label>
-          City :<br>
-        <input type="text" formControlName="city">
-      </label>
-    </div>
-    <button type="submit" [disabled]="!userForm.valid">Submit</button>
+<div class='container'>
+  <div>
+    <label>
+    Username :<br>
+      <input type="text" [formControl]="username">
+    </label>
   </div>
-</form>
+  <div>
+    <label>
+    Email :<br>
 
+      <input type="email" [formControl]="email">
+    </label>
+  </div>
+  <div>
+    <label>
+    Password :<br>
 
-
+      <input type="password" [formControl]="password">
+    </label>
+  </div>
+  <div>
+    <label>
+    Address :<br>
+    <input type="text" [formControl]="address">
+    </label>
+    <div>
+      <label>
+      Zip : <br>
+      <input type="number" [formControl]="zip">
+      </label>
+    </div>
+    <div>
+      <label>
+      City :<br>
+      <input type="text" [formControl]="city">
+      </label>
+    </div>
+  </div>
+  <button (click)=newUser()>Sign In</button>
+</div>
 <pre>
   {{user | json}}
 </pre>
