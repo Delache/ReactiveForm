@@ -8,16 +8,21 @@ import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./sign-in.component.scss']
 })
 export class SignInComponent implements OnInit {
-
+  visible = false;
   user = new User();
   userForm = this.fb.group({
     username: [''],
-    email: [''],
-    password: [''],
-    address: [''],
-    zip: [''],
-    city: [''],
-    });
+    credentials: this.fb.group({
+      email: [''],
+      password: [''],
+    }),
+    addressForm: this.fb.group({
+      address: [''],
+      zip: [''],
+      city: [''],
+
+    })
+  });
 
 
 
@@ -28,5 +33,6 @@ export class SignInComponent implements OnInit {
   }
   onSubmit() {
     console.log(this.userForm.value);
+    this.visible = true;
 }
 }
