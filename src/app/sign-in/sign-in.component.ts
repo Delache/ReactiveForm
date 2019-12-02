@@ -1,7 +1,7 @@
 import { User } from './../shared/models/user';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { passwordValidator } from './passwordValidator';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -11,10 +11,10 @@ export class SignInComponent implements OnInit {
   visible = false;
   user = new User();
   userForm = this.fb.group({
-    username: [''],
+    username: ['', [Validators.required, Validators.minLength(4)]],
     credentials: this.fb.group({
       email: [''],
-      password: [''],
+      password: ['', [Validators.required, passwordValidator]],
     }),
     addressForm: this.fb.group({
       address: [''],
